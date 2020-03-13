@@ -1,6 +1,0 @@
-2020-03-12 10:54:02,361:WARNING: From /home/dev/PythonEnviroments/ailab-researching/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/base.py:198: retry (from tensorflow.contrib.learn.python.learn.datasets.base) is deprecated and will be removed in a future version.
-Instructions for updating:
-Use the retry module or similar alternatives.
-2020-03-12 10:54:04,553:INFO: Initializing tf session
-2020-03-12 10:54:04,850:INFO: Reloading the latest trained model...
-2020-03-12 10:54:04,853:INFO: Restoring parameters from results/prototype_revised/model.weights/
