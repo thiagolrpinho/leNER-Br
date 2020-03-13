@@ -6,4 +6,5 @@ numpy==1.14.2
 seaborn==0.10.0
 nltk==3.4.5
 pdftotext==2.1.4
+openpyxl==3.0.3
 scikit_learn==0.22.2.post1
