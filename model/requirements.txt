@@ -1,0 +1,4 @@
+numpy==1.14.2
+tensorflow==1.7.0
+nltk==3.2.4
+scikit_learn==0.22.2.post1

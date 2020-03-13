@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <title>LeNER-Br: a Dataset for Named Entity Recognition in Brazilian Legal Text</title>
+  </head>
+
+  <body>
+    <h1 id="lenerbradatasetfornamedentityrecognitioninbrazilianlegaltext">LeNER-Br: a Dataset for Named Entity Recognition in Brazilian Legal Text</h1>
+
+    <p>This page holds the dataset and source code described in the paper below, which was generated as a collaboration between two institutions of the University of Bras&iacute;lia: <a href="http://next.unb.br/" target="_blank">NEXT (N&uacute;cleo de P&amp;D para Excel&ecirc;ncia e Transforma&ccedil;&atilde;o do Setor P&uacute;blico)</a> and <a href="http://www.cic.unb.br" target="_blank">CiC (Departamento de Ci&ecirc;ncia da Computa&ccedil;&atilde;o)</a>.
+      <UL>
+	<LI>
+	  <a href="http://lattes.cnpq.br/8374005378743328" target="_blank">Pedro H. Luz de Araujo</a>, <a href="http://www.cic.unb.br/~teodecampos/" target="_blank">Te&oacute;filo E. de Campos</a>, <a href="http://lattes.cnpq.br/8445622450972512" target="_blank">Renato R. R. de Oliveira</a>, <a href="http://lattes.cnpq.br/3634456971616689" target="_blank">Matheus Stauffer</a>, <a href="http://lattes.cnpq.br/1096145820609591" target="_blank">Samuel Couto</a> and <a href="http://lattes.cnpq.br/9012704117180126" target="_blank">Paulo Bermejo</a><BR />
+	  <a href="luz_etal_propor2018.pdf" target="_blank"><I>LeNER-Br: a Dataset for Named Entity Recognition in Brazilian Legal Text </I></a><BR />
+	  International Conference on the Computational Processing of Portuguese (PROPOR), September 24-26, Canela, Brazil, 2018.<BR /></li></ul>
+      <pre><code>      @InProceedings{luz_etal_propor2018,
+          author = {Pedro H. {Luz de Araujo} and Te\'{o}filo E. {de Campos} and
+          Renato R. R. {de Oliveira} and Matheus Stauffer and
+          Samuel Couto and Paulo Bermejo},
+          title = {LeNER-Br: a Dataset for Named Entity Recognition in Brazilian Legal Text},
+          booktitle = {International Conference on the Computational Processing of Portuguese
+          ({PROPOR})},
+          year = {2018},
+          month = {September 24-26},
+          address = {Canela, RS, Brazil},
+	  }	  
+      </code></pre>
+    </p>      
+    <p>
+      We also provide the LSTM-CRF model described in the paper, which achieved an average f1-score of 92.53% on the test set.
+    </p>
+    <p>
+      The sections below describe the requirements and the dataset and model files.</p>
+    <p>We kindly request that users cite our paper in any publication that is generated as a result of the use of our source code, our dataset or our pre-trained models.</p>
+    
+
+    <h2 id="requirements">Requirements</h2>
+
+    <ol>
+      <li><a href="https://www.python.org/downloads/">Python 3</a>    </li>
+
+      <li><a href="https://pip.pypa.io/en/stable/installing/">pip</a></li>
+    </ol>
+
+    <h2 id="lenerbrdataset">LeNER-Br Dataset</h2>
+
+    <p>The directory structure is as follows:</p>
+
+    <ul>
+      <li>the <a href="leNER-Br/train" target="_blank">train</a>, <a href="leNER-Br/test" target="_blank">test</a> and <a href="leNER-Br/dev" target="_blank">dev</a> folders hold space separated text files where the first column are the words and the second column are the correspondent named entity tags. Sentences are separeted by empty lines. In addition, each folder has a file that is the concatenation of all the other conll files of the same folder (train.conll, dev.conll and test.conll).</li>
+
+      <li><a href="leNER-Br/metadata" target="_blank">metadata</a> holds json files with additional information from each annotated document.</li>
+
+      <li><a href="leNER-Br/raw_text" target="_blank">raw_text</a> holds the source txt files that originated the conll files.</li>
+
+      <li><a href="leNER-Br/scripts" target="_blank">scripts</a> hold an abbreviation list used for sentence segmentation and the script that generated the conll files. To run it, use this script:</li>
+      <pre><code>python textToConll.py path/to/txtfile
+      </code></pre>
+    </ul>
+
+
+    <h2 id="model">Model</h2>
+
+    <p>The <a href="model" target="_blank">model code</a> is adapted from <a href="https://github.com/guillaumegenthial/sequence_tagging">this repo</a> and implements a NER model using Tensorflow (LSTM + CRF + chars embeddings). All code files modified are marked as such at the beginning.
+      The section below summarizes the use of the model. For more in depth explanations of how to use the model and change its configurations refer to the README of the original implementation.</p>
+
+    <h3 id="evaluation">Evaluation</h3>
+
+    <ul>
+      <li>To install the required python packages, run from the model folder:</li>
+      <pre><code>pip install -r requirements.txt
+      </code></pre>
+      <li>To obtain the f1 scores for each class on each part of the dataset:</li>
+      <pre><code>python classScores.py train
+python classScores.py dev
+python classScores.py test
+      </code></pre>
+      
+      <li>To tag a raw text file:</li>
+      <pre><code>python evaluateText path/to/txtfile</code></pre>
+      <li>To tag sentences in a interactive way:</li>
+      <pre><code>python evaluate.py</code></pre>
+      or
+      <pre><code>python evaluateSentence.py</code></pre>
+      <li>To retrain the model from scratch:</li>
+      <pre><code>python train.py</code></pre>
+    </ul>
+  </body>
+</html>
