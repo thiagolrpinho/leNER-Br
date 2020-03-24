@@ -1,6 +1,6 @@
 ''' Test module used to automatize tests for the leNER-BR model adaptation
     to AILAB pipeline
-    Note: this file should be executed from the directory above this test
+    Note: this file should be executed from the directory above ailab_ner
     folder
 '''
 import pytest

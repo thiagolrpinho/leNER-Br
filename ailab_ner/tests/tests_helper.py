@@ -2,7 +2,7 @@ import os.path
 import sys
 import pytest
 
-IO_FOLDER_RELATIVE_PATH = "tests/inputs_outputs/"
+IO_FOLDER_RELATIVE_PATH = "ailab_ner/tests/inputs_outputs/"
 
 TEST_MODE = True
 ''' TEST_MODE says that this module will be imported and used for
